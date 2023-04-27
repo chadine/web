@@ -16,10 +16,10 @@ class Client implements UserInterface , PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $Id_client;
 
-    #[ORM\Column]
-    private ?int $Id_client = null;
+   /* #[ORM\Column]
+    private ?int $Id_client = null;*/
 
     #[ORM\Column(length: 30)]
     #[Assert\NotBlank(message: 'Please enter your name')]
@@ -62,23 +62,21 @@ class Client implements UserInterface , PasswordAuthenticatedUserInterface
     #[Assert\NotBlank(message: 'Please enter Password')]
     #[Assert\Length(min: 6, max: 255, minMessage: 'Your Last Password should be at least {{ limit }} characters', maxMessage: 'Your Password cannot be longer than {{ limit }} characters')]
     private ?string $password = null;
+ 
+    #[ORM\Column(length: 255)]
+    private ?string $plainPassword;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getIdClient(): ?int
+    public function getId_client(): ?int
     {
         return $this->Id_client;
     }
 
-    public function setIdClient(int $Id_client): self
+   /* public function setIdClient(int $Id_client): self
     {
         $this->Id_client = $Id_client;
 
         return $this;
-    }
+    }*/
 
     public function getNom(): ?string
     {
@@ -184,4 +182,15 @@ class Client implements UserInterface , PasswordAuthenticatedUserInterface
     {
         // do nothing
     }
+    public function getPlainPassword(): ?string
+{
+    return $this->plainPassword;
+}
+
+public function setPlainPassword(string $plainPassword): self
+{
+    $this->plainPassword = $plainPassword;
+
+    return $this;
+}
 }

@@ -41,7 +41,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_client_show', methods: ['GET'])]
+    #[Route('/{Id_client}', name: 'app_client_show', methods: ['GET'])]
     public function show(Client $client): Response
     {
         return $this->render('client/show.html.twig', [
@@ -49,7 +49,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
+    #[Route('/{Id_client}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         $form = $this->createForm(ClientType::class, $client);
@@ -67,7 +67,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_client_delete', methods: ['POST'])]
+    #[Route('/{Id_client}', name: 'app_client_delete', methods: ['POST'])]
     public function delete(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$client->getId(), $request->request->get('_token'))) {
@@ -97,7 +97,7 @@ class ClientController extends AbstractController
                 return $this->redirectToRoute('app_login');
             }
 
-            if (!password_verify($data['password'], $client->getPassword())) {
+            if (!password_verify($data['password'], $client->getplainPassword())) {
                 $this->addFlash('error', 'Mot de passe incorrect.');
 
                 return $this->redirectToRoute('app_login');
@@ -109,7 +109,7 @@ class ClientController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        return $this->render('client/login.html.twig', [
+        return $this->render('security/login.html.twig', [
             'form' => $form->createView(),
         ]);
     }*/

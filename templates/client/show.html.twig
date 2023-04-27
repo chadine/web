@@ -8,13 +8,10 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ client.id }}</td>
-            </tr>
-            <tr>
                 <th>Id_client</th>
-                <td>{{ client.IdClient }}</td>
+                <td>{{ client.getId_client() }}</td>
             </tr>
+           
             <tr>
                 <th>Nom</th>
                 <td>{{ client.nom }}</td>
@@ -48,7 +45,7 @@
 
     <a href="{{ path('app_client_index') }}">back to list</a>
 
-    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+    <a href="{{ path('app_client_edit', {'Id_client': client.getId_client()}) }}">edit</a>
 
     {{ include('client/_delete_form.html.twig') }}
 {% endblock %}

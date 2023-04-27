@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+              
                 <th>Id_client</th>
                 <th>Nom</th>
                 <th>Prenom</th>
@@ -23,8 +23,8 @@
         <tbody>
         {% for client in clients %}
             <tr>
-                <td>{{ client.id }}</td>
-                <td>{{ client.IdClient }}</td>
+                
+               <td>{{ client.Id_client }}</td>
                 <td>{{ client.nom }}</td>
                 <td>{{ client.prenom }}</td>
                 <td>{{ client.numTel }}</td>
@@ -33,8 +33,8 @@
                 <td>{{ client.mail }}</td>
                 <td>{{ client.password }}</td>
                 <td>
-                    <a href="{{ path('app_client_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+                    <a href="{{ path('app_client_show', {'Id_client': client.getId_client()}) }}">show</a>
+                    <a href="{{ path('app_client_edit', {'Id_client': client.getId_client()}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
